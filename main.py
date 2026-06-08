@@ -6,7 +6,7 @@ engine = create_engine("sqlite:///mi_base.db")
 class Base(DeclarativeBase):
     pass
 
-class Cliente(Base):
+class cliente(Base):
     __tablename__ = "Cliente"
 
     rut_cliente: Mapped[int] = mapped_column(primary_key=True)
@@ -15,103 +15,110 @@ class Cliente(Base):
     telefono: Mapped[int]
     direccion: Mapped[str]
 
-class Pide(Base):
-    __tablename__ = "Pide"
+class cotizacion(Base):
+    __tablename__ = "Cotización"
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-class Registra(Base):
-    __tablename__ = "Registra"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-
-class Cotizacion(Base):
-    __tablename__ = "Cotizacion"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-
-class Contiene(Base):
+class contiene(Base):
     __tablename__ = "Contiene"
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-class Permite(Base):
-    __tablename__ = "Permite"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-
-class Venta(Base):
-    __tablename__ = "Venta"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-
-class Ordena(Base):
-    __tablename__ = "Ordena"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-
-class Orden_de_manufacturacion(Base):
-    __tablename__ = "Orden_de_manufacturacion"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-
-class Produce(Base):
-    __tablename__ = "Produce"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-
-class Producto(Base):
+class producto(Base):
     __tablename__ = "Producto"
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-class Solicita(Base):
-    __tablename__ = "Solicita"
+class tipo_producto(Base):
+    __tablename__ = "Tipo_Producto"
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-class Material(Base):
-    __tablename__ = "Material"
+class produce(Base):
+    __tablename__ = "Produce"
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-class Abastece(Base):
+class venta(Base):
+    __tablename__ = "Venta"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+class orden_de_manufacturacion(Base):
+    __tablename__ = "Orden_de_manufacturación"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+class gestiona(Base):
+    __tablename__ = "Gestiona"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+
+
+class orden_de_compra(Base):
+    __tablename__ = "Orden_de_Compra"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+class abastece(Base):
     __tablename__ = "Abastece"
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-class Orden_de_compra(Base):
-    __tablename__ = "Orden_de_compra"
+class proveedor(Base):
+    __tablename__ = "Proveedor"
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-class Actualiza(Base):
+class actualiza(Base):
     __tablename__ = "Actualiza"
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
-class Completa(Base):
+class material(Base):
+    __tablename__ = "Material"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+class solicita(Base):
+    __tablename__ = "Solicita"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+class pide(Base):
+    __tablename__ = "Pide"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+class registra(Base):
+    __tablename__ = "Registra"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+class permite(Base):
+    __tablename__ = "Permite"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+class ordena(Base):
+    __tablename__ = "Ordena"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+class crea(Base):
+    __tablename__ = "Crea"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+class organiza(Base):
+    __tablename__ = "Organiza"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+
+class completa(Base):
     __tablename__ = "Completa"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-
-class Proveedor(Base):
-    __tablename__ = "Proveedor"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-
-class Crea(Base):
-    __tablename__ = "Proveedor"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-
-class Gestiona(Base):
-    __tablename__ = "Proveedor"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-
-class Organiza(Base):
-    __tablename__ = "Proveedor"
 
     id: Mapped[int] = mapped_column(primary_key=True)
 
