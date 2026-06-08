@@ -1,7 +1,8 @@
-from sqlalchemy import create_engine
+from config import engine_config
+from sqlalchemy import create_engine, Integer
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
-engine = create_engine("sqlite:///mi_base.db")
+engine = create_engine(engine_config)
 
 class Base(DeclarativeBase):
     pass
@@ -9,11 +10,11 @@ class Base(DeclarativeBase):
 class cliente(Base):
     __tablename__ = "Cliente"
 
-    rut_cliente: Mapped[int] = mapped_column(primary_key=True)
-    nombre: Mapped[str]
-    correo: Mapped[str]
-    telefono: Mapped[int]
-    direccion: Mapped[str]
+    Rut_Cliente: Mapped[int] = mapped_column(primary_key=True)
+    Nombre: Mapped[str] = mapped_column()
+    Correo: Mapped[str] = mapped_column()
+    telefono: Mapped[int] = mapped_column(Integer)
+    direccion: Mapped[str] = mapped_column()
 
 class cotizacion(Base):
     __tablename__ = "Cotización"
