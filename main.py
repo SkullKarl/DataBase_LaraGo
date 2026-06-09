@@ -128,9 +128,9 @@ class proveedor(Base):
     __tablename__ = "Proveedor"
 
     id_Proveedor: Mapped[int] = mapped_column(Integer, primary_key=True)
-    Dirección: Mapped[str] = mapped_column(String(30))
+    Dirección: Mapped[str] = mapped_column(String(50))
     Teléfono: Mapped[str] = mapped_column(String(15))
-    Correo: Mapped[str] = mapped_column(String(20))
+    Correo: Mapped[str] = mapped_column(String(50))
     Nombre: Mapped[str] = mapped_column(String(30))
 
 class actualiza(Base):
