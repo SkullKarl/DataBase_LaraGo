@@ -2,7 +2,7 @@ from datetime import date
 from decimal import Decimal
 from config import engine_config
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import create_engine, Integer, Numeric, String, Enum, ForeignKey
+from sqlalchemy import create_engine, Integer, Numeric, String, Enum, Date, ForeignKey
 
 engine = create_engine(engine_config)
 
@@ -23,7 +23,7 @@ class cotizacion(Base):
 
     id_Cotización: Mapped[int] = mapped_column(primary_key=True)
     Estado: Mapped[str] = mapped_column(Enum("Pendiente", "Aprobada", "Rechazada", name ="estado_cotizacion"))
-    Fecha: Mapped[date] = mapped_column(date)
+    Fecha: Mapped[date] = mapped_column(Date)
     Descripcion: Mapped[str] = mapped_column(String(250))
     Precio_Añadido: Mapped[Decimal] = mapped_column(Numeric(10, 2))
     RUT_Cliente: Mapped[str] = mapped_column(String(12), ForeignKey("Cliente.RUT_Cliente"))
@@ -64,8 +64,8 @@ class venta(Base):
     id_Venta: Mapped[int] = mapped_column(Integer, primary_key=True)
     Monto_Venta: Mapped[Decimal] = mapped_column(Numeric(10, 2))
     Estado_Pago: Mapped[str] = mapped_column(Enum("Pendiente", "Aprobado", "Rechazado", name ="estado_venta"))
-    Fecha_Venta: Mapped[date] = mapped_column(date)
-    Fecha_Entrega: Mapped[date] = mapped_column(date)
+    Fecha_Venta: Mapped[date] = mapped_column(Date)
+    Fecha_Entrega: Mapped[date] = mapped_column(Date)
     Comentarios: Mapped[str] = mapped_column(String(100))
     RUT_Cliente: Mapped[str] = mapped_column(String(12), ForeignKey("Cliente.RUT_Cliente"))
     id_Cotizacion: Mapped[int] = mapped_column(Integer, ForeignKey("Cotización.id_Cotización"))
@@ -74,8 +74,8 @@ class orden_de_manufacturacion(Base):
     __tablename__ = "Orden_de_manufacturación"
 
     id_Orden: Mapped[int] = mapped_column(Integer, primary_key=True)
-    Fecha_Inicio: Mapped[date] = mapped_column(date)
-    Fecha_Termino: Mapped[date] = mapped_column(date)
+    Fecha_Inicio: Mapped[date] = mapped_column(Date)
+    Fecha_Termino: Mapped[date] = mapped_column(Date)
     Estado: Mapped[str] = mapped_column(Enum("No iniciada", "En proceso", "Terminada", name ="estado_orden_de_manufacturacion"))
     id_Venta: Mapped[int] = mapped_column(Integer, ForeignKey("Venta.id_Venta"))
 
@@ -113,7 +113,7 @@ class orden_de_compra(Base):
 
     id_Orden: Mapped[int] = mapped_column(Integer, primary_key=True)
     Estado: Mapped[str] = mapped_column(Enum("Por pagar", "Procesando pago", "Pagada", name ="estado_orden_de_compra"))
-    Fecha_Compra: Mapped[date] = mapped_column(date)
+    Fecha_Compra: Mapped[date] = mapped_column(Date)
     id_Usuario: Mapped[int] = mapped_column(Integer, ForeignKey("Usuario_Inventario.id_Usuario"))
     id_Proveedor: Mapped[int] = mapped_column(Integer, ForeignKey("Proveedor.id_Proveedor"))
 
@@ -143,7 +143,7 @@ class actualizacion_precio(Base):
     __tablename__ = "Actualización_Precio"
 
     Nro_Artículo: Mapped[int] = mapped_column(Integer, ForeignKey("Material.Nro_Artículo"), primary_key=True)
-    Fecha_Actualización: Mapped[date] = mapped_column(date)
+    Fecha_Actualización: Mapped[date] = mapped_column(Date)
     Precio_Unitario_Material: Mapped[Decimal] = mapped_column(Numeric(10, 2))
 
 class material(Base):
@@ -208,3 +208,5 @@ class completa(Base):
     id_Proveedor: Mapped[int] = mapped_column(Integer, ForeignKey("Proveedor.id_Proveedor"), primary_key=True)
 
 Base.metadata.create_all(engine)
+
+print("Listooo")
