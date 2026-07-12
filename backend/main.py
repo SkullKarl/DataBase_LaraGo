@@ -1,6 +1,7 @@
 from datetime import date
 from decimal import Decimal
 from config import engine_config
+from vistas import generar_vistas
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import create_engine, Integer, Numeric, String, Enum, Date, ForeignKey
 
@@ -208,5 +209,6 @@ class completa(Base):
     id_Proveedor: Mapped[int] = mapped_column(Integer, ForeignKey("Proveedor.id_Proveedor"), primary_key=True)
 
 Base.metadata.create_all(engine)
+generar_vistas(engine)
 
 print("Listooo")
